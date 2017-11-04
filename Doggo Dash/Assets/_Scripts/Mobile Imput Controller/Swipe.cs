@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Swipe: MonoBehaviour
 {
+    public float swipeOffset = 50f;
 	private bool swipeLeft, swipeRight, swipeUp, swipeDown;
 	private bool isDraging = false;
 	private Vector2 startTouch, swipeDelta;
@@ -59,7 +60,7 @@ public class Swipe: MonoBehaviour
 		}   
 
 		// Did we cross the deadzone????
-		if (swipeDelta.magnitude > 50)
+		if (swipeDelta.magnitude > swipeOffset)
 		{
 			// Which direction?
 			float x = swipeDelta.x;
@@ -79,7 +80,6 @@ public class Swipe: MonoBehaviour
 					swipeDown = true;
 				else
 					swipeUp = true;
-				Debug.Log ("Up");
 
 			}
 
