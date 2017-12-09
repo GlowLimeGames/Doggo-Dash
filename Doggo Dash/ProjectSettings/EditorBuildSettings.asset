@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/ddmenu.unity
+    guid: a7751ddc3fd5f054f81c18d751287d4a
+  - enabled: 1
     path: Assets/feature_nault22e_Background.unity
     guid: 8897803e1fc594c67b60647120818ed5
