@@ -142,6 +142,8 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 8
   swipeControls: {fileID: 6281767}
+  sprite: {fileID: 6281766}
+  gc: {fileID: 770503907}
 --- !u!61 &6281763
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -782,7 +784,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1136729365904056, guid: abae5a74cfc44014ba816a67e3e0e409, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317067066457192, guid: abae5a74cfc44014ba816a67e3e0e409,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abae5a74cfc44014ba816a67e3e0e409, type: 2}
@@ -987,6 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: {fileID: 1835594195}
+  liveStocks: 3
   pc: {fileID: 6281762}
 --- !u!82 &770503908
 AudioSource:
