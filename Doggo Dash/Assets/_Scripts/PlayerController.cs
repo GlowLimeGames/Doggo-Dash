@@ -20,12 +20,42 @@ public class PlayerController : MonoBehaviour {
 	bool crawling = false;
     bool sitting = false;
 	bool hasJump = true;
-
+	private bool hit = false;
+	public SpriteRenderer sprite;
+	public GameController gc;
 	// Use this for initialization
 	private void Start () {
 		myRigidBody = GetComponent<Rigidbody2D> ();
 	}
 
+	public void Hit() {
+		
+		if (hit == false) {
+			gc.liveStocks -= 1;
+			if (gc.liveStocks < 0) {
+			} else {
+				StartCoroutine (Blink ());
+			}
+		}
+	}
+
+	public IEnumerator Blink(){
+		hit = true;
+		float timer = 0f;
+		bool visible = true;
+		while (timer < 2f) {
+			if (visible) {
+				sprite.color = Color.white;
+			} else {
+				sprite.color = Color.clear;
+			}
+			visible = !visible;
+			timer += .2f;
+			yield return new WaitForSeconds (.2f);
+		}
+		sprite.color = Color.white;
+		hit = false;
+	}
 	// Update is called once per frame
 	private void Update () {
 
