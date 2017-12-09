@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
     bool sitting = false;
 	bool hasJump = true;
 	private bool hit = false;
+    bool dead = false;
 	public SpriteRenderer sprite;
 	public GameController gc;
 	// Use this for initialization
@@ -31,8 +32,11 @@ public class PlayerController : MonoBehaviour {
 	public void Hit() {
 		
 		if (hit == false) {
+            AudioController.Instance.PlaySFX("Dogs Bark #5");
 			gc.liveStocks -= 1;
 			if (gc.liveStocks < 0) {
+                gc.Restart();
+                dead = true;
 			} else {
 				StartCoroutine (Blink ());
 			}
@@ -58,6 +62,10 @@ public class PlayerController : MonoBehaviour {
 	}
 	// Update is called once per frame
 	private void Update () {
+        if (dead)
+        {
+            return;
+        }
 
         if (swipeControls.SwipeDown)
         {

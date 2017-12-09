@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
 	public Text distance;
+    public Text endpanelscore;
 	public int liveStocks=3;
 	public PlayerController pc;
+    public Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +21,26 @@ public class GameController : MonoBehaviour {
 		distance.text = Mathf.Round(pc.transform.position.x).ToString ();
 	}
 	public void Restart(){
-		Scene currentScene = SceneManager.GetActiveScene ();
-		SceneManager.LoadScene (currentScene.name);
+        EndPanel();
+        AudioController.Instance.PlaySFX("gameOver");
+    }
 
-	}
+    void EndPanel()
+    {
+        anim.Play("endpanelfall");
+        
+        endpanelscore.text = distance.text;
+        distance.gameObject.SetActive(false);
+    }
+
+    public void RestartScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    public void MenuScene()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
